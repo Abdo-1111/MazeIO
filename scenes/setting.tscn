@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Unbounded-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/setting.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="setting" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+theme = SubResource( 2 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mazeSize" type="TextEdit" parent="."]
+margin_left = 535.0
+margin_top = 178.0
+margin_right = 594.0
+margin_bottom = 218.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerSpeed" type="TextEdit" parent="."]
+margin_left = 535.0
+margin_top = 258.0
+margin_right = 594.0
+margin_bottom = 298.0
+text = "200"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mazesize" type="RichTextLabel" parent="."]
+margin_left = 394.0
+margin_top = 178.0
+margin_right = 468.0
+margin_bottom = 231.0
+custom_colors/default_color = Color( 0.0509804, 0.0352941, 0.0352941, 1 )
+text = "Maze size"
+
+[node name="playerspeed" type="RichTextLabel" parent="."]
+margin_left = 394.0
+margin_top = 258.0
+margin_right = 482.0
+margin_bottom = 323.0
+custom_colors/default_color = Color( 0.113725, 0.0431373, 0.0431373, 1 )
+text = "Player speed"
+
+[node name="save" type="Button" parent="."]
+margin_left = 468.0
+margin_top = 474.0
+margin_right = 579.0
+margin_bottom = 505.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reset" type="Button" parent="."]
+margin_left = 468.0
+margin_top = 524.0
+margin_right = 579.0
+margin_bottom = 555.0
+text = "reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backtomenu" type="Button" parent="."]
+margin_left = 854.0
+margin_top = 37.0
+margin_right = 965.0
+margin_bottom = 68.0
+text = "back to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="algorithm" type="RichTextLabel" parent="."]
+margin_left = 394.0
+margin_top = 354.0
+margin_right = 496.0
+margin_bottom = 407.0
+custom_colors/default_color = Color( 0.0509804, 0.0352941, 0.0352941, 1 )
+text = "Algorithm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="algorithmOption" type="OptionButton" parent="."]
+margin_left = 535.0
+margin_top = 354.0
+margin_right = 606.0
+margin_bottom = 380.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="show" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 658.0
+margin_top = 356.0
+margin_right = 760.0
+margin_bottom = 409.0
+custom_colors/default_color = Color( 0.0509804, 0.0352941, 0.0352941, 1 )
+text = "show"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+visible = false
+margin_left = 716.0
+margin_top = 353.0
+margin_right = 740.0
+margin_bottom = 381.0
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="backtomenu" to="." method="_on_backtomenu_pressed"]
+[connection signal="item_selected" from="algorithmOption" to="." method="_on_algorithmOption_item_selected"]

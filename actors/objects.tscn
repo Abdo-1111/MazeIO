@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/wall30.png" type="Texture" id=2]
+[ext_resource path="res://assets/door.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15, 15 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15, 15 )
+
+[node name="objects" type="Node2D"]
+
+[node name="wall" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="door" type="Sprite" parent="."]
+position = Vector2( 83, 63 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D"]
+shape = SubResource( 2 )

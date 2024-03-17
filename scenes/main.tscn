@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://actors/objects.tres" type="TileSet" id=1]
+[ext_resource path="res://src/TileMap.gd" type="Script" id=2]
+[ext_resource path="res://actors/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/goal.png" type="Texture" id=4]
+[ext_resource path="res://assets/Unbounded-VariableFont_wght.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 5 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "goal.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 4 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="main" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 30, 30 )
+format = 1
+script = ExtResource( 2 )
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 48 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 510, 281 )
+current = true
+zoom = Vector2( 1.2, 1.2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 949.0
+margin_top = -65.0
+margin_right = 1116.0
+margin_bottom = -22.0
+custom_fonts/font = SubResource( 1 )
+text = "Back to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reset" type="Button" parent="."]
+margin_left = -96.0
+margin_top = -65.0
+margin_right = 2.0
+margin_bottom = -26.0
+custom_fonts/font = SubResource( 1 )
+text = "reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="goal" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 30, 30 )
+format = 1
+[connection signal="pressed" from="Button" to="TileMap" method="_on_Button_pressed"]
+[connection signal="pressed" from="reset" to="TileMap" method="_on_reset_pressed"]
